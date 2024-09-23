@@ -2,7 +2,7 @@
 ![alt text](images/webui_flutter.png)
 ## In the future
 - **Add NPC generation**:Every NPC will have a Agent powered by LLM  
-- **Add quest generation**:A quest line will be generater by LLM for every NPC, and they will follow their purpose.  
+- **Add quest generation**:A quest line will be generater by LLM for every NPC every NPC will follow their purpose.  
 - **Add map control**: Beable to control the tile type such as sturucture,special tile...  
 - **Add png**:The app will be able to choose the png of the tile/item/skill by the tag created by LLM.
 
