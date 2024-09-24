@@ -4,7 +4,7 @@
 - **Add NPC generation**:Every NPC will have a Agent powered by LLM  
 - **Add quest generation**:A quest line will be generater by LLM for every NPC every NPC will follow their purpose.  
 - **Add map control**: Beable to control the tile type such as sturucture,special tile...  
-- **Add png**:The app will be able to choose the png of the tile/item/skill by the tag created by LLM.
+- **Add png**:The app will be able to choose the png of the tile/item/skill by the tag created by LLM.  
 flowchart TD
     A[Start] --> B[User Input]
     B --> C[Send Request to Backend]
