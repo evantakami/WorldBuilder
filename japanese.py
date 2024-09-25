@@ -361,19 +361,18 @@ def assign_items_to_tiles(items, map_grid):
         selected_tile.items.append(item)
         print(f"アイテム '{item.name}' がタイル ({selected_tile.row}, {selected_tile.col}) に配置されました")
 def generate_game_data(scene_description, map_size, counts):
-    # 生成物品、技能和地图
     items = generate_items(scene_description, counts)
     skills = generate_skills(scene_description, counts)
     map_grid = generate_full_map(scene_description, map_size)
     
-    # 将物品分配到地图格子上
+
     assign_items_to_tiles(items, map_grid)
     
-    # 将数据整合为字典格式
+
     game_data = {
-        'items': [item.dict() for item in items],  # 物品数据
-        'skills': [skill.dict() for skill in skills],  # 技能数据
-        'map': {'grid': [tile.dict() for row in map_grid for tile in row if tile]}  # 地图数据
+        'items': [item.dict() for item in items],
+        'skills': [skill.dict() for skill in skills],
+        'map': {'grid': [tile.dict() for row in map_grid for tile in row if tile]}
     }
     
     return game_data
