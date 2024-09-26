@@ -360,19 +360,24 @@ def assign_items_to_tiles(items, map_grid):
 
         selected_tile.items.append(item)
         print(f"アイテム '{item.name}' がタイル ({selected_tile.row}, {selected_tile.col}) に配置されました")
+import concurrent.futures
+
 def generate_game_data(scene_description, map_size, counts):
-    items = generate_items(scene_description, counts)
-    skills = generate_skills(scene_description, counts)
-    map_grid = generate_full_map(scene_description, map_size)
-    
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        future_items = executor.submit(generate_items, scene_description, counts)
+        future_skills = executor.submit(generate_skills, scene_description, counts)
+        future_map_grid = executor.submit(generate_full_map, scene_description, map_size)
+
+        items = future_items.result()
+        skills = future_skills.result()
+        map_grid = future_map_grid.result()
 
     assign_items_to_tiles(items, map_grid)
-    
 
     game_data = {
         'items': [item.dict() for item in items],
         'skills': [skill.dict() for skill in skills],
         'map': {'grid': [tile.dict() for row in map_grid for tile in row if tile]}
     }
-    
+
     return game_data
